@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\Hash;
 class CreateUsersTable extends Migration
 {
     /**
@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->tinyInteger('level')->default(1);
-            $table->string('password');
+            $table->string('password')->default(Hash::make('password'));
 
             $table->rememberToken();
             $table->timestamps();
